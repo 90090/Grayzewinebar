@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  --color-wine-black: #0a0a0a;
+  --color-wine-gold: #d4af37;
+  --color-wine-light-gold: #f2d785;
+  --color-wine-green: #1a3a2e;
+  --color-wine-gray: #333333;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  
+}
+  
+@layer utilities {
+  .text-shadow-gold {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .backdrop-blur-nav {
+    backdrop-filter: blur(10px); 
+  }
+}

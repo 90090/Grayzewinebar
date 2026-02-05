@@ -1,0 +1,112 @@
+---
+---
+
+<section id="contact" class="py-20 px-8 bg-wine-black">
+  <div class="text-center mb-16 pt-20">
+    <h2 class="text-5xl text-wine-gold tracking-[3px] font-light uppercase mb-4">
+      Visit Us
+    </h2>
+    <div class="relative w-24 h-0.5 bg-wine-gold mx-auto">
+      <div class="absolute top-1/2 -translate-y-1/2 -left-5 w-2 h-2 bg-wine-green rounded-full"></div>
+      <div class="absolute top-1/2 -translate-y-1/2 -right-5 w-2 h-2 bg-wine-green rounded-full"></div>
+    </div>
+  </div>
+
+  <div class="max-w-[1400px] mx-auto mb-16">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <!-- Contact Info Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="content-center bg-gradient-to-br from-wine-gray to-wine-green p-8 rounded-lg border border-wine-gold text-center transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg hover:shadow-wine-gold/30">
+          <h3 class="text-wine-gold text-xl tracking-[2px] mb-2">Location</h3>
+          <p class="text-white leading-relaxed">61 Center St<br/>Southington, CT</p>
+        </div>
+
+        <div class="content-center bg-gradient-to-br from-wine-gray to-wine-green p-8 rounded-lg border border-wine-gold text-center transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg hover:shadow-wine-gold/30">
+          <h3 class="text-wine-gold text-xl tracking-[2px] mb-2">Hours</h3>
+          <p class="text-white leading-relaxed">
+            Monday - Thursday: 4pm - 11pm<br/>
+            Friday - Saturday: 4pm - 1am<br/>
+            Sunday: 2pm - 10pm
+          </p>
+        </div>
+
+        <div class="content-center bg-gradient-to-br from-wine-gray to-wine-green p-8 rounded-lg border border-wine-gold text-center transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg hover:shadow-wine-gold/30">
+          <h3 class="text-wine-gold text-xl tracking-[2px] mb-2">Email</h3>
+          <p class="text-white leading-relaxed">info@grayzewinebar.com</p>
+        </div>
+
+        <div class="content-center bg-gradient-to-br from-wine-gray to-wine-green p-8 rounded-lg border border-wine-gold text-center transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg hover:shadow-wine-gold/30">
+          <h3 class="text-wine-gold text-xl tracking-[2px] mb-2">Phone</h3>
+          <p class="text-white leading-relaxed">(860)-426-0885</p>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="bg-gradient-to-br from-wine-green to-wine-gray p-12 rounded-lg border border-wine-gold">
+        <h3 class="text-wine-gold text-3xl text-center tracking-[2px] mb-8">Get In Touch</h3>
+        <form class="space-y-6" id="contactForm">
+          <div>
+            <input
+              type="text"
+              placeholder="Your Name"
+              required
+              class="w-full p-4 bg-white/5 border border-wine-gold/30 rounded text-white font-serif transition-all duration-300 focus:outline-none focus:border-wine-gold focus:bg-white/10 placeholder:text-white/50"
+            />
+          </div>
+          <div>
+            <input
+              type="email"
+              placeholder="Your Email"
+              required
+              class="w-full p-4 bg-white/5 border border-wine-gold/30 rounded text-white font-serif transition-all duration-300 focus:outline-none focus:border-wine-gold focus:bg-white/10 placeholder:text-white/50"
+            />
+          </div>
+          <div>
+            <input
+              type="tel"
+              placeholder="Phone Number"
+              class="w-full p-4 bg-white/5 border border-wine-gold/30 rounded text-white font-serif transition-all duration-300 focus:outline-none focus:border-wine-gold focus:bg-white/10 placeholder:text-white/50"
+            />
+          </div>
+          <div>
+            <textarea
+              placeholder="Your Message"
+              rows="5"
+              required
+              class="w-full p-4 bg-white/5 border border-wine-gold/30 rounded text-white font-serif transition-all duration-300 focus:outline-none focus:border-wine-gold focus:bg-white/10 placeholder:text-white/50"
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="w-full py-4 px-8 bg-wine-gold text-wine-black rounded font-bold text-lg tracking-[2px] uppercase transition-all duration-300 hover:bg-wine-light-gold hover:-translate-y-0.5 hover:shadow-lg hover:shadow-wine-gold/40"
+          >
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Map -->
+  <div class="max-w-[1400px] mx-auto border-4 border-wine-gold rounded-lg overflow-hidden shadow-lg shadow-wine-gold/20">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3061.187725317983!2d-72.879683!3d41.601858299999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7b706b685311d%3A0x57f052635826e728!2sGrayze%20Wine%20Bar!5e1!3m2!1sen!2sus!4v1770325075939!5m2!1sen!2sus"
+      width="100%"
+      height="450"
+      style="border:0;"
+      allowfullscreen
+      loading="lazy"
+    ></iframe>
+  </div>
+</section>
+
+<script>
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you for your message! We will get back to you soon.');
+      (contactForm as HTMLFormElement).reset();
+    });
+  }
+</script>

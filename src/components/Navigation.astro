@@ -1,0 +1,80 @@
+---
+const { currentPath = '/' } = Astro.props;
+---
+
+<nav id="navbar" class="fixed top-0 w-full bg-wine-black/95 backdrop-blur-nav z-50 py-4 transition-all duration-300 border-b border-wine-gold/20">
+  <div class="max-w-[1400px] mx-auto px-8 flex justify-between items-center">
+    <div class="text-2xl font-bold text-wine-gold tracking-[3px]">
+      Grayze Wine Bar
+    </div>
+    <ul class="flex list-none gap-12">
+      <li>
+        <a 
+          href="/#home" 
+          class="text-white no-underline text-base tracking-wider transition-colors duration-300 relative hover:text-wine-gold nav-link"
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a 
+          href="/#gallery" 
+          class="text-white no-underline text-base tracking-wider transition-colors duration-300 relative hover:text-wine-gold nav-link"
+        >
+          Gallery
+        </a>
+      </li>
+      <li>
+        <a 
+          href="/#contact" 
+          class="text-white no-underline text-base tracking-wider transition-colors duration-300 relative hover:text-wine-gold nav-link"
+        >
+          Contact Us
+        </a>
+      </li>
+      <li>
+        <a 
+          href="/menu" 
+          class={`text-white no-underline text-base tracking-wider transition-colors duration-300 relative hover:text-wine-gold nav-link ${currentPath === '/menu' ? 'active' : ''}`}
+        >
+          Menu
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #d4af37;
+    transition: width 0.3s ease;
+  }
+  
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: 100%;
+  }
+</style>
+
+<script>
+  let lastScroll = 0;
+  const navbar = document.getElementById('navbar');
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll <= 0) {
+      navbar?.classList.remove('shadow-lg');
+    } else {
+      navbar?.classList.add('shadow-lg', 'shadow-wine-gold/20');
+    }
+    
+    lastScroll = currentScroll;
+  });
+</script>
