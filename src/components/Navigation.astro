@@ -4,10 +4,12 @@ const { currentPath = '/' } = Astro.props;
 
 <nav id="navbar" class="fixed top-0 w-full bg-wine-black/95 backdrop-blur-nav z-50 py-4 transition-all duration-300 border-b border-wine-gold/20">
   <div class="max-w-[1400px] mx-auto px-8 flex justify-between items-center">
-    <div class="text-2xl font-bold text-wine-gold tracking-[3px]">
+    <div class="text-xl md:text-2xl font-bold text-wine-gold tracking-[3px]">
       Grayze Wine Bar
     </div>
-    <ul class="flex list-none gap-12">
+    
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex list-none gap-12">
       <li>
         <a 
           href="/#home" 
@@ -41,6 +43,58 @@ const { currentPath = '/' } = Astro.props;
         </a>
       </li>
     </ul>
+
+    <!-- Mobile Hamburger Button -->
+    <button 
+      id="mobileMenuButton"
+      class="md:hidden flex flex-col gap-1.5 w-8 h-8 justify-center items-center transition-all duration-300"
+      aria-label="Toggle menu"
+    >
+      <span class="hamburger-line w-7 h-0.5 bg-wine-gold transition-all duration-300"></span>
+      <span class="hamburger-line w-7 h-0.5 bg-wine-gold transition-all duration-300"></span>
+      <span class="hamburger-line w-7 h-0.5 bg-wine-gold transition-all duration-300"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <div 
+    id="mobileMenu"
+    class="md:hidden overflow-hidden max-h-0 transition-all duration-500 ease-in-out bg-wine-black/98 border-t border-wine-gold/10"
+  >
+    <ul class="flex flex-col list-none py-4">
+      <li>
+        <a 
+          href="/#home" 
+          class="mobile-nav-link block px-8 py-4 text-white no-underline text-lg tracking-wider transition-all duration-300 hover:bg-wine-gold/10 hover:text-wine-gold border-l-4 border-transparent hover:border-wine-gold"
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a 
+          href="/#gallery" 
+          class="mobile-nav-link block px-8 py-4 text-white no-underline text-lg tracking-wider transition-all duration-300 hover:bg-wine-gold/10 hover:text-wine-gold border-l-4 border-transparent hover:border-wine-gold"
+        >
+          Gallery
+        </a>
+      </li>
+      <li>
+        <a 
+          href="/#contact" 
+          class="mobile-nav-link block px-8 py-4 text-white no-underline text-lg tracking-wider transition-all duration-300 hover:bg-wine-gold/10 hover:text-wine-gold border-l-4 border-transparent hover:border-wine-gold"
+        >
+          Contact Us
+        </a>
+      </li>
+      <li>
+        <a 
+          href="/menu" 
+          class={`mobile-nav-link block px-8 py-4 text-white no-underline text-lg tracking-wider transition-all duration-300 hover:bg-wine-gold/10 hover:text-wine-gold border-l-4 border-transparent hover:border-wine-gold ${currentPath === '/menu' ? 'border-wine-gold bg-wine-gold/10 text-wine-gold' : ''}`}
+        >
+          Menu
+        </a>
+      </li>
+    </ul>
   </div>
 </nav>
 
@@ -65,7 +119,11 @@ const { currentPath = '/' } = Astro.props;
 <script>
   let lastScroll = 0;
   const navbar = document.getElementById('navbar');
+  const mobileMenuButton = document.getElementById('mobileMenuButton');
+  const mobileMenu = document.getElementById('mobileMenu');
+  let isMenuOpen = false;
 
+  // Scroll effect
   window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     
@@ -76,5 +134,64 @@ const { currentPath = '/' } = Astro.props;
     }
     
     lastScroll = currentScroll;
+  });
+
+  // Mobile menu toggle
+  mobileMenuButton?.addEventListener('click', () => {
+    isMenuOpen = !isMenuOpen;
+    
+    if (isMenuOpen) {
+      // Open menu
+      mobileMenu?.classList.remove('max-h-0');
+      mobileMenu?.classList.add('max-h-96');
+      
+      // Animate hamburger to X
+      const lines = mobileMenuButton.querySelectorAll('.hamburger-line');
+      lines[0]?.classList.add('rotate-45', 'translate-y-2');
+      lines[1]?.classList.add('opacity-0');
+      lines[2]?.classList.add('-rotate-45', '-translate-y-2');
+    } else {
+      // Close menu
+      mobileMenu?.classList.remove('max-h-96');
+      mobileMenu?.classList.add('max-h-0');
+      
+      // Animate X back to hamburger
+      const lines = mobileMenuButton.querySelectorAll('.hamburger-line');
+      lines[0]?.classList.remove('rotate-45', 'translate-y-2');
+      lines[1]?.classList.remove('opacity-0');
+      lines[2]?.classList.remove('-rotate-45', '-translate-y-2');
+    }
+  });
+
+  // Close menu when clicking a link
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      isMenuOpen = false;
+      mobileMenu?.classList.remove('max-h-96');
+      mobileMenu?.classList.add('max-h-0');
+      
+      const lines = mobileMenuButton?.querySelectorAll('.hamburger-line');
+      if (lines) {
+        lines[0]?.classList.remove('rotate-45', 'translate-y-2');
+        lines[1]?.classList.remove('opacity-0');
+        lines[2]?.classList.remove('-rotate-45', '-translate-y-2');
+      }
+    });
+  });
+
+  // Close menu on resize if window becomes desktop size
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768 && isMenuOpen) {
+      isMenuOpen = false;
+      mobileMenu?.classList.remove('max-h-96');
+      mobileMenu?.classList.add('max-h-0');
+      
+      const lines = mobileMenuButton?.querySelectorAll('.hamburger-line');
+      if (lines) {
+        lines[0]?.classList.remove('rotate-45', 'translate-y-2');
+        lines[1]?.classList.remove('opacity-0');
+        lines[2]?.classList.remove('-rotate-45', '-translate-y-2');
+      }
+    }
   });
 </script>

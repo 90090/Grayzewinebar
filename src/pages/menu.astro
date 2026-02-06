@@ -147,18 +147,59 @@ const smallPlates = [
   <Navigation currentPath="/menu" />
 
   <!-- Menu Hero -->
-  <section class="h-[60vh] relative flex flex-col items-center justify-center bg-gradient-to-br from-wine-green to-wine-black overflow-hidden">
-    <div class="absolute inset-0 opacity-[0.03]" style="background-image: repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(212, 175, 55, 1) 50px, rgba(212, 175, 55, 1) 51px);"></div>
+  <section class="relative flex flex-col items-center justify-center overflow-hidden
+  h-[50vh] sm:h-[55vh] md:h-[60vh]
+  bg-gradient-to-br from-wine-green to-wine-black
+  px-6 text-center">
+
+    <!-- Gold stripe texture -->
+    <div
+      class="absolute inset-0 opacity-[0.03]"
+      style="background-image: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 50px,
+        rgba(212, 175, 55, 1) 50px,
+        rgba(212, 175, 55, 1) 51px
+      );">
+    </div>
+
+    <!-- Vignette -->
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent,rgba(10,10,10,0.5))]"></div>
-    
-    <h1 class="relative z-[2] text-7xl md:text-8xl font-light text-wine-gold tracking-[8px] uppercase mb-4 text-shadow-gold">
+
+    <!-- Title -->
+    <h1
+      class="relative z-[2]
+        text-4xl sm:text-5xl md:text-7xl lg:text-8xl
+        font-light uppercase text-wine-gold
+        tracking-[4px] sm:tracking-[6px] md:tracking-[8px]
+        mb-3 sm:mb-4
+        text-shadow-gold"
+    >
       Our Selection
     </h1>
-    <p class="relative z-[2] text-2xl text-white tracking-[3px] italic">
+
+    <!-- Subtitle -->
+    <p
+      class="relative z-[2]
+        text-base sm:text-lg md:text-2xl
+        text-white italic
+        tracking-[1.5px] sm:tracking-[2px] md:tracking-[3px]
+        max-w-[28rem] sm:max-w-none"
+    >
       Curated wines from around the world
     </p>
-    <div class="relative z-[2] w-[200px] h-0.5 bg-gradient-to-r from-transparent via-wine-gold to-transparent mt-8"></div>
+
+    <!-- Divider -->
+    <div
+      class="relative z-[2]
+        w-[120px] sm:w-[160px] md:w-[200px]
+        h-0.5
+        bg-gradient-to-r from-transparent via-wine-gold to-transparent
+        mt-6 sm:mt-8"
+    ></div>
   </section>
+
 
   <!-- Menu Content -->
   <section class="py-20 px-8 bg-gradient-to-b from-wine-black via-wine-gray to-wine-black">

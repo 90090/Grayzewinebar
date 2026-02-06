@@ -10,10 +10,10 @@ const images: GalleryImage[] = [
   { src: '/gallery/gallery-lighting.webp', alt: 'Interior 2' },
   { src: '/gallery/gallery-seating.webp', alt: 'Wine Selection' },
   { src: '/gallery/gallery-seating2.webp', alt: 'Bar Area' },
-  { src: '/gallery/gallery-seating.webp', alt: 'Wine Bottles' },
-  { src: '/gallery/gallery-seating.webp', alt: 'Seating' },
-  { src: '/gallery/gallery-seating.webp', alt: 'Ambiance' },
-  { src: '/gallery/gallery-seating.webp', alt: 'Details' },
+  { src: '/gallery/gallery-seating3.webp', alt: 'Wine Bottles' },
+  { src: '/gallery/gallery-seating2.webp', alt: 'Seating' },
+  { src: '/gallery/gallery-seating3.webp', alt: 'Ambiance' },
+  { src: '/gallery/gallery-chairs.webp', alt: 'Details' },
 ];
 
 export default function Gallery() {
@@ -52,9 +52,9 @@ export default function Gallery() {
 
   return (
     <>
-      <section id="gallery" className="py-20 px-8 bg-gradient-to-b from-wine-black via-wine-gray to-wine-black">
-        <div className="text-center mb-16 pt-20">
-          <h2 className="text-5xl text-wine-gold tracking-[3px] font-light uppercase mb-4">
+      <section id="gallery" className="py-12 md:py-20 px-4 md:px-8 bg-gradient-to-b from-wine-black via-wine-gray to-wine-black">
+        <div className="text-center mb-8 md:mb-16 pt-12 md:pt-20">
+          <h2 className="text-3xl md:text-5xl text-wine-gold tracking-[3px] font-light uppercase mb-4">
             Our Space
           </h2>
           <div className="relative w-24 h-0.5 bg-wine-gold mx-auto">
@@ -63,7 +63,52 @@ export default function Gallery() {
           </div>
         </div>
 
-        <div className="max-w-[1400px] mx-auto grid grid-cols-6 auto-rows-[200px] gap-4">
+        {/* Mobile: Simple 2-column grid */}
+        <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:hidden auto-rows-[150px] gap-2">
+          {images.map((image, index) => (
+            <div
+              key={index}
+              onClick={() => openModal(index)}
+              className="relative overflow-hidden cursor-pointer border-2 border-transparent transition-all duration-300 active:border-wine-gold group"
+            >
+              <img src={image.src} alt={image.alt} className="w-full h-full object-cover transition-transform duration-500 group-active:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-br from-wine-gold/80 to-wine-green/80 flex items-center justify-center opacity-0 transition-opacity duration-300 group-active:opacity-100">
+                <span className="text-3xl text-white font-light">+</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Tablet: 4-column grid */}
+        <div className="hidden md:grid lg:hidden max-w-[1400px] mx-auto grid-cols-4 auto-rows-[180px] gap-3">
+          {/* Featured large image */}
+          <div
+            onClick={() => openModal(0)}
+            className="col-span-2 row-span-2 relative overflow-hidden cursor-pointer border-2 border-transparent transition-all duration-300 hover:border-wine-gold hover:scale-[1.02] hover:z-10 group"
+          >
+            <img src={images[0].src} alt={images[0].alt} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+            <div className="absolute inset-0 bg-gradient-to-br from-wine-gold/80 to-wine-green/80 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <span className="text-4xl text-white font-light">+</span>
+            </div>
+          </div>
+
+          {/* Rest of images in smaller sizes */}
+          {images.slice(1).map((image, index) => (
+            <div
+              key={index + 1}
+              onClick={() => openModal(index + 1)}
+              className="col-span-1 row-span-1 relative overflow-hidden cursor-pointer border-2 border-transparent transition-all duration-300 hover:border-wine-gold hover:scale-[1.02] hover:z-10 group"
+            >
+              <img src={image.src} alt={image.alt} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-br from-wine-gold/80 to-wine-green/80 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <span className="text-3xl text-white font-light">+</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop: Original masonry layout */}
+        <div className="hidden lg:grid max-w-[1400px] mx-auto grid-cols-6 auto-rows-[200px] gap-4">
           {/* Large featured image */}
           <div
             onClick={() => openModal(0)}
@@ -154,12 +199,12 @@ export default function Gallery() {
       {/* Modal */}
       {modalOpen && (
         <div
-          className="fixed inset-0 z-[2000] bg-black/95 flex items-center justify-center"
+          className="fixed inset-0 z-[2000] bg-black/95 flex items-center justify-center p-4"
           onClick={closeModal}
         >
           <button
             onClick={closeModal}
-            className="absolute top-8 right-12 text-wine-gold text-5xl font-light cursor-pointer transition-colors duration-300 hover:text-white"
+            className="absolute top-4 right-4 md:top-8 md:right-12 text-wine-gold text-4xl md:text-5xl font-light cursor-pointer transition-colors duration-300 hover:text-white z-10"
           >
             &times;
           </button>
@@ -167,7 +212,7 @@ export default function Gallery() {
           <img
             src={images[currentIndex].src}
             alt={images[currentIndex].alt}
-            className="max-w-[90%] max-h-[90%] object-contain border-4 border-wine-gold"
+            className="max-w-[95%] md:max-w-[90%] max-h-[85%] md:max-h-[90%] object-contain border-2 md:border-4 border-wine-gold"
             onClick={(e) => e.stopPropagation()}
           />
 
@@ -176,7 +221,7 @@ export default function Gallery() {
               e.stopPropagation();
               changeImage(-1);
             }}
-            className="absolute left-8 top-1/2 -translate-y-1/2 bg-wine-gold/30 text-white border-2 border-wine-gold px-6 py-4 text-3xl cursor-pointer transition-all duration-300 hover:bg-wine-gold hover:text-wine-black"
+            className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 bg-wine-gold/30 text-white border-2 border-wine-gold px-3 py-2 md:px-6 md:py-4 text-2xl md:text-3xl cursor-pointer transition-all duration-300 hover:bg-wine-gold hover:text-wine-black"
           >
             &#10094;
           </button>
@@ -186,7 +231,7 @@ export default function Gallery() {
               e.stopPropagation();
               changeImage(1);
             }}
-            className="absolute right-8 top-1/2 -translate-y-1/2 bg-wine-gold/30 text-white border-2 border-wine-gold px-6 py-4 text-3xl cursor-pointer transition-all duration-300 hover:bg-wine-gold hover:text-wine-black"
+            className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 bg-wine-gold/30 text-white border-2 border-wine-gold px-3 py-2 md:px-6 md:py-4 text-2xl md:text-3xl cursor-pointer transition-all duration-300 hover:bg-wine-gold hover:text-wine-black"
           >
             &#10095;
           </button>
