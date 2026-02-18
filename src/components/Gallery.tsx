@@ -6,14 +6,13 @@ interface GalleryImage {
 }
 
 const images: GalleryImage[] = [
-  { src: '/gallery/gallery-bar.webp', alt: 'Interior 1' },
-  { src: '/gallery/gallery-lighting.webp', alt: 'Interior 2' },
-  { src: '/gallery/gallery-seating.webp', alt: 'Wine Selection' },
+  { src: '/gallery/interior1.webp', alt: 'Interior 1' },
+  { src: '/gallery/interior2.webp', alt: 'Interior 2' },
+  { src: '/gallery/seating.webp', alt: 'Wine Selection' },
   { src: '/gallery/gallery-seating2.webp', alt: 'Bar Area' },
-  { src: '/gallery/gallery-seating3.webp', alt: 'Wine Bottles' },
-  { src: '/gallery/gallery-seating2.webp', alt: 'Seating' },
-  { src: '/gallery/gallery-seating3.webp', alt: 'Ambiance' },
-  { src: '/gallery/gallery-chairs.webp', alt: 'Details' },
+  { src: '/gallery/bar_area.webp', alt: 'Wine Bottles' },
+  { src: '/gallery/gallery-chairs.webp', alt: 'Cocktail' },
+
 ];
 
 export default function Gallery() {
@@ -52,7 +51,7 @@ export default function Gallery() {
 
   return (
     <>
-      <section id="gallery" className="py-12 md:py-20 px-4 md:px-8 bg-gradient-to-b from-wine-black via-wine-gray to-wine-black">
+      <section id="gallery" className="py-12 px-4 md:px-8 bg-gradient-to-b from-wine-black via-wine-gray to-wine-black">
         <div className="text-center mb-8 md:mb-16 pt-12 md:pt-20">
           <h2 className="text-3xl md:text-5xl text-wine-gold tracking-[3px] font-light uppercase mb-4">
             Our Space
@@ -174,7 +173,7 @@ export default function Gallery() {
           </div>
 
           {/* Wide image */}
-          <div
+          {/* <div
             onClick={() => openModal(6)}
             className="col-span-3 row-span-1 relative overflow-hidden cursor-pointer border-2 border-transparent transition-all duration-300 hover:border-wine-gold hover:scale-[1.02] hover:z-10 group"
           >
@@ -192,7 +191,7 @@ export default function Gallery() {
             <div className="absolute inset-0 bg-gradient-to-br from-wine-gold/80 to-wine-green/80 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span className="text-5xl text-white font-light">+</span>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
