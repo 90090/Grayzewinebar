@@ -6,12 +6,12 @@ interface GalleryImage {
 }
 
 const images: GalleryImage[] = [
-  { src: '/gallery/interior1.webp', alt: 'Interior 1' },
+  { src: '/gallery/barandcouch.JPG', alt: 'Interior 1' },
   { src: '/gallery/interior2.webp', alt: 'Interior 2' },
-  { src: '/gallery/seating.webp', alt: 'Wine Selection' },
-  { src: '/gallery/gallery-seating2.webp', alt: 'Bar Area' },
+  { src: '/gallery/seating1.JPG', alt: 'Wine Selection' },
+  { src: '/gallery/seating2.JPG', alt: 'Bar Area' },
   { src: '/gallery/bar_area.webp', alt: 'Wine Bottles' },
-  { src: '/gallery/gallery-chairs.webp', alt: 'Cocktail' },
+  { src: '/gallery/seating3.JPG', alt: 'Cocktail' },
 
 ];
 
