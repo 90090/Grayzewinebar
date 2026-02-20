@@ -4,320 +4,377 @@ import "../styles/global.css";
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 
-const redWines = [
-  {
-    name: "Château Margaux",
-    price: "$180",
-    region: "Bordeaux, France",
-    description: "Elegant and refined, with notes of blackcurrant, violet, and cedar. A timeless expression of Margaux terroir.",
-    year: "2018",
-    type: "Cabernet Sauvignon Blend"
-  },
-  {
-    name: "Opus One",
-    price: "$145",
-    region: "Napa Valley, California",
-    description: "Rich and powerful, showcasing dark fruit, espresso, and velvety tannins. A harmonious marriage of Old and New World.",
-    year: "2019",
-    type: "Cabernet Sauvignon"
-  },
-  {
-    name: "Brunello di Montalcino",
-    price: "$95",
-    region: "Tuscany, Italy",
-    description: "Complex and structured with cherry, leather, and tobacco. Traditional winemaking at its finest.",
-    year: "2017",
-    type: "Sangiovese"
-  },
-  {
-    name: "Penfolds Grange",
-    price: "$125",
-    region: "South Australia",
-    description: "Bold and intense with blackberry, mocha, and spice. Australia's most iconic wine.",
-    year: "2018",
-    type: "Shiraz"
-  }
+const starters = [
+  { name: "Marinated Olives",       price: "$10",    description: "Citrus Peel & Herbs, Pita Chips" },
+  { name: "Shrimp Cocktail",        price: "$18",    description: "Cocktail Sauce & Lemon" },
+  { name: "Crudité and Hummus",     price: "$13",    description: "Seasonal Vegetables, Creamy Hummus" },
+  { name: "Whipped Ricotta",        price: "$11",    description: "Finished With Hot Honey & Pita Chips" },
+  { name: "Flatbread",              price: "$15",    description: "Rotating Selection, Crafted with Seasonal Ingredients" },
+  { name: "Baked Feta",             price: "$14",    description: "Olives & Rosemary, Baguette" },
+  { name: "Pulled Pork Nachos",     price: "$15",    description: "Pickled Jalapeños, Avocado, Sour Cream" },
+  { name: "Charcuterie Nachos",     price: "$15",    description: "Prosciutto, Brie, Fig Jam, Stuffed Peppers" },
+  { name: "Grayzing Board",         price: "$28/35", description: "Chef's Selection of Meats & Cheeses, Olives, Fig Jam, Stuffed Pepper" },
 ];
 
-const whiteWines = [
-  {
-    name: "Chassagne-Montrachet",
-    price: "$110",
-    region: "Burgundy, France",
-    description: "Exquisite minerality with notes of citrus, hazelnut, and white flowers. Pure Burgundian elegance.",
-    year: "2020",
-    type: "Chardonnay"
-  },
-  {
-    name: "Cloudy Bay",
-    price: "$65",
-    region: "Marlborough, New Zealand",
-    description: "Vibrant and aromatic with passion fruit, grapefruit, and fresh herbs. A benchmark Sauvignon Blanc.",
-    year: "2022",
-    type: "Sauvignon Blanc"
-  },
-  {
-    name: "Riesling Spätlese",
-    price: "$55",
-    region: "Mosel, Germany",
-    description: "Delicate sweetness balanced by crisp acidity. Peach, apricot, and slate notes dance on the palate.",
-    year: "2021",
-    type: "Riesling"
-  },
-  {
-    name: "Viognier",
-    price: "$48",
-    region: "Condrieu, France",
-    description: "Lush and aromatic with apricot, honeysuckle, and orange blossom. Beautifully textured.",
-    year: "2022",
-    type: "Viognier"
-  }
+const specials = [
+  { name: "Local Blue",                  price: "$15", description: "Connecticut Distilling Blueberry Rum, Lemonade, Basil" },
+  { name: "Maple Ember Old Fashioned",   price: "$17", description: "Connecticut Distilling Fort Hill Bourbon, Maple Syrup, Bitters" },
+  { name: "Tradewinds",                  price: "$16", description: "Kavo Rum, Lime Juice, Simple Syrup, Pineapple Juice, Bitters" },
+  { name: "Grayze Spritz",               price: "$15", description: "Aperol, Orangecello, Club Soda, Prosecco" },
+  { name: "Pomegranate Cosmopolitan",    price: "$16", description: "Connecticut Distilling Waterville Vodka, Blood Orange Liqueur, Lime & Pomegranate Juices" },
+  { name: "The Empress",                 price: "$15", description: "Empress Gin, Lemon Juice, Triple Sec, Fee Foam" },
+  { name: "Signature Espresso Martini",  price: "$16", description: "Connecticut Distilling Waterville Vodka & Espresso Liqueur, Vanilla Demerara Syrup, Espresso Shot" },
 ];
 
-const sparklingRose = [
-  {
-    name: "Dom Pérignon",
-    price: "$220",
-    region: "Champagne, France",
-    description: "Legendary champagne with layers of brioche, almond, and citrus. Perfectly balanced effervescence.",
-    year: "2013",
-    type: "Champagne"
-  },
-  {
-    name: "Veuve Clicquot",
-    price: "$85",
-    region: "Champagne, France",
-    description: "Rich and toasty with apple, pear, and vanilla notes. The iconic yellow label champagne.",
-    year: "NV",
-    type: "Champagne"
-  },
-  {
-    name: "Whispering Angel",
-    price: "$52",
-    region: "Provence, France",
-    description: "Delicate and refreshing rosé with strawberry, melon, and citrus. Perfect for any occasion.",
-    year: "2023",
-    type: "Rosé"
-  },
-  {
-    name: "Franciacorta Brut",
-    price: "$68",
-    region: "Lombardy, Italy",
-    description: "Crisp and elegant Italian sparkler with green apple, toast, and minerality. Traditional method excellence.",
-    year: "NV",
-    type: "Sparkling"
-  }
+const sparkling = [
+  { wine: "Prosecco",   producer: "Porta Dante",       region: "Italy",              notes: "Green apple, white peach, Meyer Lemon",            glass: "12", bottle: "47" },
+  { wine: "Brut Rosé",  producer: "Gruet",             region: "New Mexico",         notes: "Strawberry, red cherry, raspberry",                glass: "11", bottle: "43" },
+  { wine: "Champagne",  producer: "Collet Brut Rosé",  region: "Champagne, France",  notes: "Strawberry, raspberry, mulberry, rose petals",     glass: "—",  bottle: "81" },
 ];
 
-const smallPlates = [
-  {
-    name: "Charcuterie Board",
-    price: "$32",
-    description: "Selection of artisanal cured meats, aged cheeses, house-made preserves, and grilled baguette"
-  },
-  {
-    name: "Burrata & Prosciutto",
-    price: "$24",
-    description: "Creamy burrata, prosciutto di Parma, heirloom tomatoes, basil, aged balsamic"
-  },
-  {
-    name: "Truffle Arancini",
-    price: "$18",
-    description: "Crispy risotto balls with black truffle, fontina cheese, truffle aioli"
-  },
-  {
-    name: "Oysters on the Half Shell",
-    price: "$22",
-    description: "Half dozen fresh oysters, mignonette, cocktail sauce, lemon"
-  },
-  {
-    name: "Olive & Almond Medley",
-    price: "$14",
-    description: "Marinated olives, Marcona almonds, citrus, herbs"
-  },
-  {
-    name: "Artisan Flatbread",
-    price: "$16",
-    description: "Fig, goat cheese, arugula, honey drizzle, prosciutto"
-  }
+const whites = [
+  { wine: "Riesling",         producer: "Revelation",               region: "Washington State",     notes: "Pear, melon, lavender (sweet)",                           glass: "11", bottle: "43" },
+  { wine: "Pinot Gris",       producer: "J Vineyards",              region: "Sonoma, CA",           notes: "Ripe pear, white peach, Anjou Apple, lime",               glass: "12", bottle: "47" },
+  { wine: "Albariño",         producer: "Terras Gauda",             region: "Rías Baixas, Spain",   notes: "White flowers, citrus, peach, tropical fruit",            glass: "—",  bottle: "54" },
+  { wine: "Sauvignon Blanc",  producer: "The Champion",             region: "New Zealand",          notes: "Passionfruit, pink grapefruit, gooseberry",               glass: "11", bottle: "42" },
+  { wine: "Sauvignon Blanc",  producer: "Domaine Roc De l'Abbaye",  region: "Loire Valley, France", notes: "White fruits, pear, apricot",                             glass: "13", bottle: "51" },
+  { wine: "Sancerre",         producer: "Frank Millet",             region: "Sancerre, France",     notes: "Grapefruit, lemon, white peach, white flowers",           glass: "—",  bottle: "68" },
+  { wine: "Chardonnay",       producer: "Bravium",                  region: "Russian River Valley", notes: "Apple, apricot, peach, mango",                           glass: "14", bottle: "55" },
+  { wine: "Chardonnay",       producer: "Allumea (Organic)",        region: "Sicily, Italy",        notes: "Pineapple, lemon, white peach",                          glass: "10", bottle: "39" },
+];
+
+const roses = [
+  { wine: "Rosé", producer: "Ame du Vin \"Soul of Wine\"",  region: "Provence, France",  notes: "Apricot, lemon, grapefruit, jasmine",                  glass: "14", bottle: "55" },
+  { wine: "Rosé", producer: "Flowers",                    region: "Sonoma, CA",         notes: "Wild strawberry, rose petals, grapefruit, peach",      glass: "—",  bottle: "59" },
+];
+
+const reds = [
+  { wine: "Pinot Noir",          producer: "Duxinaro",               region: "St. Helena, CA",            notes: "Red berries, plum, red cherry",                           glass: "12", bottle: "47"  },
+  { wine: "Pinot Noir",          producer: "Maison Albert Bichot",   region: "Burgundy, France",          notes: "Red berries, plum, chocolate",                            glass: "—",  bottle: "48"  },
+  { wine: "Pinot Noir",          producer: "Flowers",                region: "Sonoma, CA",                notes: "Red cherry, raspberry, pomegranate",                      glass: "—",  bottle: "108" },
+  { wine: "Merlot",              producer: "Big Flower",             region: "Stellenbosch, South Africa",notes: "Dark cherry, plum, blackberry, spice, vanilla",           glass: "—",  bottle: "43"  },
+  { wine: "Merlot",              producer: "Swanson",                region: "Rutherford, CA",            notes: "Plum, strawberry, blackberry, coffee",                    glass: "—",  bottle: "69"  },
+  { wine: "Super Tuscan",        producer: "Bruni Poggio D'Elsa",    region: "Tuscany, Italy",            notes: "Red cherry, plum, blackcurrant, spices",                  glass: "14", bottle: "55"  },
+  { wine: "Chianti Classico",    producer: "Castello di Albola",     region: "Tuscany, Italy",            notes: "Strawberry, sour cherry, red berries",                    glass: "12", bottle: "47"  },
+  { wine: "Tempranillo",         producer: "El Coto Crianza",        region: "Rioja, Spain",              notes: "Raspberry, cherry, vanilla, toasted oak",                 glass: "12", bottle: "47"  },
+  { wine: "Red Blend",           producer: "Escudo Rojo Gran Riserva",region: "Chile",                   notes: "Black cherry, blackcurrant, spice, coffee",               glass: "—",  bottle: "43"  },
+  { wine: "Grenache",            producer: "Shatter",                region: "Roussillon, France",        notes: "Black cherry, raspberry, blackberry",                     glass: "—",  bottle: "55"  },
+  { wine: "Zinfandel",           producer: "Ridge Three Valleys",    region: "Sonoma, CA",               notes: "Red black berries, black fruits, spices",                  glass: "—",  bottle: "89"  },
+  { wine: "Malbec",              producer: "Susana Balbo",           region: "Uco Valley, Argentina",     notes: "Blackberry, black cherry, blueberries",                   glass: "—",  bottle: "46"  },
+  { wine: "Red Blend",           producer: "Orin Swift, 8 Years",    region: "Napa, CA",                  notes: "Blackberry, raspberry, black pepper, chocolate",          glass: "—",  bottle: "92"  },
+  { wine: "Cabernet Franc",      producer: "Salentein Reserve",      region: "Uco Valley, Argentina",     notes: "Blackcurrant, plum, black cherry",                        glass: "—",  bottle: "50"  },
+  { wine: "Cabernet Sauvignon",  producer: "Barossa Valley",         region: "South Australia",           notes: "Blackcurrant, dark plum, blackberry",                     glass: "10", bottle: "39"  },
+  { wine: "Cabernet Sauvignon",  producer: "75 Wine Company",        region: "Napa, CA",                  notes: "Strawberry, blackberry, red cherry",                      glass: "14",  bottle: "55"  },
+  { wine: "Cabernet Sauvignon",  producer: "Tate, Spring Street",    region: "Napa, CA",                  notes: "Blackberries, plums, red currant, licorice",              glass: "—",  bottle: "129" },
 ];
 ---
 
 <Layout title="Menu - Grayze Wine Bar" currentPath="/menu">
   <Navigation currentPath="/menu" />
 
-  <!-- Menu Hero -->
-  <section class="relative flex flex-col items-center justify-center overflow-hidden
-  h-[50vh] sm:h-[55vh] md:h-[60vh]
-  bg-gradient-to-br from-wine-green to-wine-black
-  px-6 text-center">
-
-    <!-- Gold stripe texture -->
-    <div
-      class="absolute inset-0 opacity-[0.03]"
-      style="background-image: repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 50px,
-        rgba(212, 175, 55, 1) 50px,
-        rgba(212, 175, 55, 1) 51px
-      );">
-    </div>
-
-    <!-- Vignette -->
+  <!-- Hero -->
+  <section class="relative flex flex-col items-center justify-center overflow-hidden h-[50vh] sm:h-[55vh] md:h-[60vh] bg-gradient-to-br from-wine-green to-wine-black px-6 text-center">
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: repeating-linear-gradient(90deg,transparent,transparent 50px,rgba(212,175,55,1) 50px,rgba(212,175,55,1) 51px);"></div>
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent,rgba(10,10,10,0.5))]"></div>
-
-    <!-- Title -->
-    <h1
-      class="relative z-[2]
-        text-4xl sm:text-5xl md:text-7xl lg:text-8xl
-        font-light uppercase text-wine-gold
-        tracking-[4px] sm:tracking-[6px] md:tracking-[8px]
-        mb-3 sm:mb-4
-        text-shadow-gold"
-    >
-      Our Selection
-    </h1>
-
-    <!-- Subtitle -->
-    <p
-      class="relative z-[2]
-        text-base sm:text-lg md:text-2xl
-        text-white italic
-        tracking-[1.5px] sm:tracking-[2px] md:tracking-[3px]
-        max-w-[28rem] sm:max-w-none"
-    >
-      Curated wines from around the world
-    </p>
-
-    <!-- Divider -->
-    <div
-      class="relative z-[2]
-        w-[120px] sm:w-[160px] md:w-[200px]
-        h-0.5
-        bg-gradient-to-r from-transparent via-wine-gold to-transparent
-        mt-6 sm:mt-8"
-    ></div>
+    <h1 class="relative z-[2] text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light uppercase text-wine-gold tracking-[4px] sm:tracking-[6px] md:tracking-[8px] mb-3 text-shadow-gold">Our Selection</h1>
+    <p class="relative z-[2] text-base sm:text-lg md:text-2xl text-white italic tracking-[2px] max-w-[28rem] sm:max-w-none">Curated wines, craft cocktails & small plates</p>
+    <div class="relative z-[2] w-[160px] h-0.5 bg-gradient-to-r from-transparent via-wine-gold to-transparent mt-7"></div>
   </section>
 
-
-  <!-- Menu Content -->
-  <section class="py-20 px-8 bg-gradient-to-b from-wine-black via-wine-gray to-wine-black">
-    <div class="max-w-[1400px] mx-auto">
-      
-      <!-- Red Wines -->
-      <div class="mb-24">
-        <div class="text-center mb-12">
-          <h2 class="text-5xl text-wine-gold tracking-[4px] font-light uppercase mb-4 relative inline-block category-title">
-            Red Wines
-          </h2>
-          <div class="relative w-[150px] h-0.5 bg-wine-gold mx-auto mt-4">
-            <div class="absolute top-1/2 -translate-y-1/2 -left-4 w-1.5 h-1.5 bg-wine-green rounded-full"></div>
-            <div class="absolute top-1/2 -translate-y-1/2 -right-4 w-1.5 h-1.5 bg-wine-green rounded-full"></div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {redWines.map((wine) => (
-            <div class="bg-gradient-to-br from-wine-green/30 to-wine-gray/30 p-8 rounded-lg border border-wine-gold/30 transition-all duration-300 hover:border-wine-gold
-             hover:shadow-lg hover:shadow-wine-gold/20 wine-card">
-              <div class="flex justify-between items-baseline mb-2 pb-2 border-b border-dotted border-wine-gold/30">
-                <h3 class="text-2xl text-wine-gold tracking-wider">{wine.name}</h3>
-                <span class="text-xl text-wine-light-gold font-bold">{wine.price}</span>
-              </div>
-              <p class="text-sm text-white/70 italic mb-4">{wine.region}</p>
-              <p class="text-base leading-relaxed text-white/90 mb-4">{wine.description}</p>
-              <div class="flex justify-between pt-4 border-t border-wine-gold/20">
-                <span class="text-sm text-wine-gold tracking-wider">{wine.year}</span>
-                <span class="text-sm text-wine-gold tracking-wider">{wine.type}</span>
-              </div>
-            </div>
-          ))}
-        </div>
+  <!-- PDF Download Bar -->
+  <div class="bg-wine-green border-y border-wine-gold/30 py-4 px-4">
+    <div class="max-w-[1400px] mx-auto flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-center">
+      <span class="text-wine-gold/60 text-xs tracking-[3px] uppercase hidden sm:block">View Full Menus</span>
+      <div class="flex flex-wrap justify-center gap-3">
+        {[
+          { label: "Starter Menu",   href: "/menus/starter-menu.png"  },
+          { label: "Specials Menu",  href: "/menus/specials-menu.png" },
+          { label: "Wine List",      href: "/menus/wine-list.png"     },
+        ].map(({ label, href }) => (
+          <a href={href} target="_blank"
+            class="flex items-center gap-2 px-4 py-2 border border-wine-gold/40 rounded text-wine-gold text-xs sm:text-sm tracking-wider hover:bg-wine-gold hover:text-wine-black transition-all duration-200">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-4 h-4 flex-shrink-0">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="12" y1="18" x2="12" y2="12"/>
+              <polyline points="9 15 12 18 15 15"/>
+            </svg>
+            {label}
+          </a>
+        ))}
       </div>
+    </div>
+  </div>
 
-      <!-- White Wines -->
-      <div class="mb-24">
-        <div class="text-center mb-12">
-          <h2 class="text-5xl text-wine-gold tracking-[4px] font-light uppercase mb-4 relative inline-block category-title">
-            White Wines
-          </h2>
-          <div class="relative w-[150px] h-0.5 bg-wine-gold mx-auto mt-4">
-            <div class="absolute top-1/2 -translate-y-1/2 -left-4 w-1.5 h-1.5 bg-wine-green rounded-full"></div>
-            <div class="absolute top-1/2 -translate-y-1/2 -right-4 w-1.5 h-1.5 bg-wine-green rounded-full"></div>
-          </div>
-        </div>
+  <!-- All Menu Content -->
+  <section class="py-16 md:py-20 px-4 sm:px-8 bg-gradient-to-b from-wine-black via-wine-gray to-wine-black">
+    <div class="max-w-[1400px] mx-auto space-y-24">
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {whiteWines.map((wine) => (
-            <div class="bg-gradient-to-br from-wine-green/30 to-wine-gray/30 p-8 rounded-lg border border-wine-gold/30 transition-all duration-300 hover:border-wine-gold hover:shadow-lg hover:shadow-wine-gold/20 wine-card">
-              <div class="flex justify-between items-baseline mb-2 pb-2 border-b border-dotted border-wine-gold/30">
-                <h3 class="text-2xl text-wine-gold tracking-wider">{wine.name}</h3>
-                <span class="text-xl text-wine-light-gold font-bold">{wine.price}</span>
-              </div>
-              <p class="text-sm text-white/70 italic mb-4">{wine.region}</p>
-              <p class="text-base leading-relaxed text-white/90 mb-4">{wine.description}</p>
-              <div class="flex justify-between pt-4 border-t border-wine-gold/20">
-                <span class="text-sm text-wine-gold tracking-wider">{wine.year}</span>
-                <span class="text-sm text-wine-gold tracking-wider">{wine.type}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      <!-- Section heading helper rendered inline each time -->
 
-      <!-- Sparkling & Rosé -->
-      <div class="mb-24">
-        <div class="text-center mb-12">
-          <h2 class="text-5xl text-wine-gold tracking-[4px] font-light uppercase mb-4 relative inline-block category-title">
-            Sparkling & Rosé
-          </h2>
-          <div class="relative w-[150px] h-0.5 bg-wine-gold mx-auto mt-4">
-            <div class="absolute top-1/2 -translate-y-1/2 -left-4 w-1.5 h-1.5 bg-wine-green rounded-full"></div>
-            <div class="absolute top-1/2 -translate-y-1/2 -right-4 w-1.5 h-1.5 bg-wine-green rounded-full"></div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {sparklingRose.map((wine) => (
-            <div class="bg-gradient-to-br from-wine-green/30 to-wine-gray/30 p-8 rounded-lg border border-wine-gold/30 transition-all duration-300 hover:border-wine-gold hover:shadow-lg hover:shadow-wine-gold/20 wine-card">
-              <div class="flex justify-between items-baseline mb-2 pb-2 border-b border-dotted border-wine-gold/30">
-                <h3 class="text-2xl text-wine-gold tracking-wider">{wine.name}</h3>
-                <span class="text-xl text-wine-light-gold font-bold">{wine.price}</span>
-              </div>
-              <p class="text-sm text-white/70 italic mb-4">{wine.region}</p>
-              <p class="text-base leading-relaxed text-white/90 mb-4">{wine.description}</p>
-              <div class="flex justify-between pt-4 border-t border-wine-gold/20">
-                <span class="text-sm text-wine-gold tracking-wider">{wine.year}</span>
-                <span class="text-sm text-wine-gold tracking-wider">{wine.type}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <!-- Small Plates -->
+      <!-- ── STARTERS ── -->
       <div>
         <div class="text-center mb-12">
-          <h2 class="text-5xl text-wine-gold tracking-[4px] font-light uppercase mb-4 relative inline-block category-title">
-            Small Plates
-          </h2>
+          <h2 class="text-4xl md:text-5xl text-wine-gold tracking-[4px] font-light uppercase mb-4 relative inline-block category-title">Starters</h2>
           <div class="relative w-[150px] h-0.5 bg-wine-gold mx-auto mt-4">
             <div class="absolute top-1/2 -translate-y-1/2 -left-4 w-1.5 h-1.5 bg-wine-green rounded-full"></div>
             <div class="absolute top-1/2 -translate-y-1/2 -right-4 w-1.5 h-1.5 bg-wine-green rounded-full"></div>
           </div>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {smallPlates.map((item) => (
-            <div class="bg-gradient-to-br from-wine-green/30 to-wine-gray/30 p-8 rounded-lg border border-wine-gold/30 transition-all duration-300 hover:border-wine-gold hover:shadow-lg hover:shadow-wine-gold/20 food-card">
-              <div class="flex justify-between items-baseline mb-4 pb-2 border-b border-dotted border-wine-gold/30">
-                <h3 class="text-xl text-wine-gold tracking-wider">{item.name}</h3>
-                <span class="text-lg text-wine-light-gold font-bold">{item.price}</span>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7">
+          {starters.map((item) => (
+            <div class="food-card bg-gradient-to-br from-wine-green/30 to-wine-gray/30 p-6 rounded-lg border border-wine-gold/30">
+              <div class="flex justify-between items-baseline mb-3 pb-2 border-b border-dotted border-wine-gold/30 gap-3">
+                <h3 class="text-base md:text-lg text-wine-gold tracking-wider leading-snug">{item.name}</h3>
+                <span class="text-base md:text-lg text-wine-light-gold font-bold flex-shrink-0">{item.price}</span>
               </div>
-              <p class="text-base leading-relaxed text-white/90">{item.description}</p>
+              <p class="text-sm leading-relaxed text-white/80">{item.description}</p>
             </div>
           ))}
+        </div>
+      </div>
+
+      <!-- ── COCKTAIL SPECIALS ── -->
+      <div>
+        <div class="text-center mb-12">
+          <h2 class="text-4xl md:text-5xl text-wine-gold tracking-[4px] font-light uppercase mb-4 relative inline-block category-title">Cocktail Specials</h2>
+          <div class="relative w-[150px] h-0.5 bg-wine-gold mx-auto mt-4">
+            <div class="absolute top-1/2 -translate-y-1/2 -left-4 w-1.5 h-1.5 bg-wine-green rounded-full"></div>
+            <div class="absolute top-1/2 -translate-y-1/2 -right-4 w-1.5 h-1.5 bg-wine-green rounded-full"></div>
+          </div>
+          <p class="text-white/40 text-xs tracking-[3px] mt-4 uppercase italic">Proudly featuring liquor from Connecticut Distilling</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7">
+          {specials.map((item) => (
+            <div class="food-card bg-gradient-to-br from-wine-green/30 to-wine-gray/30 p-6 rounded-lg border border-wine-gold/30">
+              <div class="flex justify-between items-baseline mb-3 pb-2 border-b border-dotted border-wine-gold/30 gap-3">
+                <h3 class="text-base md:text-lg text-wine-gold tracking-wider leading-snug">{item.name}</h3>
+                <span class="text-base md:text-lg text-wine-light-gold font-bold flex-shrink-0">{item.price}</span>
+              </div>
+              <p class="text-sm leading-relaxed text-white/80">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- ── SPARKLING ── -->
+      <div>
+        <div class="text-center mb-12">
+          <h2 class="text-4xl md:text-5xl text-wine-gold tracking-[4px] font-light uppercase mb-4 relative inline-block category-title">Sparkling</h2>
+          <div class="relative w-[150px] h-0.5 bg-wine-gold mx-auto mt-4">
+            <div class="absolute top-1/2 -translate-y-1/2 -left-4 w-1.5 h-1.5 bg-wine-green rounded-full"></div>
+            <div class="absolute top-1/2 -translate-y-1/2 -right-4 w-1.5 h-1.5 bg-wine-green rounded-full"></div>
+          </div>
+        </div>
+        <!-- Mobile cards / Desktop table -->
+        <div class="block md:hidden space-y-4">
+          {sparkling.map((w) => (
+            <div class="wine-card bg-gradient-to-br from-wine-green/30 to-wine-gray/30 p-5 rounded-lg border border-wine-gold/30">
+              <div class="flex justify-between items-start mb-1">
+                <div>
+                  <span class="text-wine-gold font-semibold tracking-wide">{w.wine}</span>
+                  <span class="text-white/50 text-sm ml-2">· {w.producer}</span>
+                </div>
+                <div class="text-right flex-shrink-0 ml-3">
+                  {w.glass !== "—" && <div class="text-wine-light-gold text-sm">Glass <span class="font-bold">${w.glass}</span></div>}
+                  <div class="text-wine-light-gold text-sm">Bottle <span class="font-bold">${w.bottle}</span></div>
+                </div>
+              </div>
+              <p class="text-white/50 text-xs italic mb-1">{w.region}</p>
+              <p class="text-white/75 text-sm">{w.notes}</p>
+            </div>
+          ))}
+        </div>
+        <div class="hidden md:block overflow-x-auto rounded-lg border border-wine-gold/20">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-wine-green/60 border-b border-wine-gold/30">
+                <th class="text-left px-5 py-3 text-wine-gold tracking-widest font-light uppercase text-xs">Wine</th>
+                <th class="text-left px-5 py-3 text-wine-gold tracking-widest font-light uppercase text-xs">Producer</th>
+                <th class="text-left px-5 py-3 text-wine-gold tracking-widest font-light uppercase text-xs">Region</th>
+                <th class="text-left px-5 py-3 text-wine-gold tracking-widest font-light uppercase text-xs">Notes</th>
+                <th class="text-right px-5 py-3 text-wine-gold tracking-widest font-light uppercase text-xs">Glass</th>
+                <th class="text-right px-5 py-3 text-wine-gold tracking-widest font-light uppercase text-xs">Bottle</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sparkling.map((w, i) => (
+                <tr class={`wine-row border-b border-wine-gold/10 ${i % 2 === 0 ? 'bg-wine-black/40' : 'bg-wine-green/10'}`}>
+                  <td class="px-5 py-4 text-wine-gold font-medium tracking-wide">{w.wine}</td>
+                  <td class="px-5 py-4 text-white/70">{w.producer}</td>
+                  <td class="px-5 py-4 text-white/50 italic text-xs">{w.region}</td>
+                  <td class="px-5 py-4 text-white/75 max-w-xs">{w.notes}</td>
+                  <td class="px-5 py-4 text-wine-light-gold text-right">{w.glass !== "—" ? `$${w.glass}` : "—"}</td>
+                  <td class="px-5 py-4 text-wine-light-gold font-bold text-right">${w.bottle}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── WHITE ── -->
+      <div>
+        <div class="text-center mb-12">
+          <h2 class="text-4xl md:text-5xl text-wine-gold tracking-[4px] font-light uppercase mb-4 relative inline-block category-title">White Wines</h2>
+          <div class="relative w-[150px] h-0.5 bg-wine-gold mx-auto mt-4">
+            <div class="absolute top-1/2 -translate-y-1/2 -left-4 w-1.5 h-1.5 bg-wine-green rounded-full"></div>
+            <div class="absolute top-1/2 -translate-y-1/2 -right-4 w-1.5 h-1.5 bg-wine-green rounded-full"></div>
+          </div>
+        </div>
+        <div class="block md:hidden space-y-4">
+          {whites.map((w) => (
+            <div class="wine-card bg-gradient-to-br from-wine-green/30 to-wine-gray/30 p-5 rounded-lg border border-wine-gold/30">
+              <div class="flex justify-between items-start mb-1">
+                <div>
+                  <span class="text-wine-gold font-semibold tracking-wide">{w.wine}</span>
+                  <span class="text-white/50 text-sm ml-2">· {w.producer}</span>
+                </div>
+                <div class="text-right flex-shrink-0 ml-3">
+                  {w.glass !== "—" && <div class="text-wine-light-gold text-sm">Glass <span class="font-bold">${w.glass}</span></div>}
+                  <div class="text-wine-light-gold text-sm">Bottle <span class="font-bold">${w.bottle}</span></div>
+                </div>
+              </div>
+              <p class="text-white/50 text-xs italic mb-1">{w.region}</p>
+              <p class="text-white/75 text-sm">{w.notes}</p>
+            </div>
+          ))}
+        </div>
+        <div class="hidden md:block overflow-x-auto rounded-lg border border-wine-gold/20">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-wine-green/60 border-b border-wine-gold/30">
+                <th class="text-left px-5 py-3 text-wine-gold tracking-widest font-light uppercase text-xs">Wine</th>
+                <th class="text-left px-5 py-3 text-wine-gold tracking-widest font-light uppercase text-xs">Producer</th>
+                <th class="text-left px-5 py-3 text-wine-gold tracking-widest font-light uppercase text-xs">Region</th>
+                <th class="text-left px-5 py-3 text-wine-gold tracking-widest font-light uppercase text-xs">Notes</th>
+                <th class="text-right px-5 py-3 text-wine-gold tracking-widest font-light uppercase text-xs">Glass</th>
+                <th class="text-right px-5 py-3 text-wine-gold tracking-widest font-light uppercase text-xs">Bottle</th>
+              </tr>
+            </thead>
+            <tbody>
+              {whites.map((w, i) => (
+                <tr class={`wine-row border-b border-wine-gold/10 ${i % 2 === 0 ? 'bg-wine-black/40' : 'bg-wine-green/10'}`}>
+                  <td class="px-5 py-4 text-wine-gold font-medium tracking-wide">{w.wine}</td>
+                  <td class="px-5 py-4 text-white/70">{w.producer}</td>
+                  <td class="px-5 py-4 text-white/50 italic text-xs">{w.region}</td>
+                  <td class="px-5 py-4 text-white/75 max-w-xs">{w.notes}</td>
+                  <td class="px-5 py-4 text-wine-light-gold text-right">{w.glass !== "—" ? `$${w.glass}` : "—"}</td>
+                  <td class="px-5 py-4 text-wine-light-gold font-bold text-right">${w.bottle}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── ROSÉ ── -->
+      <div>
+        <div class="text-center mb-12">
+          <h2 class="text-4xl md:text-5xl text-wine-gold tracking-[4px] font-light uppercase mb-4 relative inline-block category-title">Rosé</h2>
+          <div class="relative w-[150px] h-0.5 bg-wine-gold mx-auto mt-4">
+            <div class="absolute top-1/2 -translate-y-1/2 -left-4 w-1.5 h-1.5 bg-wine-green rounded-full"></div>
+            <div class="absolute top-1/2 -translate-y-1/2 -right-4 w-1.5 h-1.5 bg-wine-green rounded-full"></div>
+          </div>
+        </div>
+        <div class="block md:hidden space-y-4">
+          {roses.map((w) => (
+            <div class="wine-card bg-gradient-to-br from-wine-green/30 to-wine-gray/30 p-5 rounded-lg border border-wine-gold/30">
+              <div class="flex justify-between items-start mb-1">
+                <div>
+                  <span class="text-wine-gold font-semibold tracking-wide">{w.wine}</span>
+                  <span class="text-white/50 text-sm ml-2">· {w.producer}</span>
+                </div>
+                <div class="text-right flex-shrink-0 ml-3">
+                  {w.glass !== "—" && <div class="text-wine-light-gold text-sm">Glass <span class="font-bold">${w.glass}</span></div>}
+                  <div class="text-wine-light-gold text-sm">Bottle <span class="font-bold">${w.bottle}</span></div>
+                </div>
+              </div>
+              <p class="text-white/50 text-xs italic mb-1">{w.region}</p>
+              <p class="text-white/75 text-sm">{w.notes}</p>
+            </div>
+          ))}
+        </div>
+        <div class="hidden md:block overflow-x-auto rounded-lg border border-wine-gold/20">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-wine-green/60 border-b border-wine-gold/30">
+                <th class="text-left px-5 py-3 text-wine-gold tracking-widest font-light uppercase text-xs">Wine</th>
+                <th class="text-left px-5 py-3 text-wine-gold tracking-widest font-light uppercase text-xs">Producer</th>
+                <th class="text-left px-5 py-3 text-wine-gold tracking-widest font-light uppercase text-xs">Region</th>
+                <th class="text-left px-5 py-3 text-wine-gold tracking-widest font-light uppercase text-xs">Notes</th>
+                <th class="text-right px-5 py-3 text-wine-gold tracking-widest font-light uppercase text-xs">Glass</th>
+                <th class="text-right px-5 py-3 text-wine-gold tracking-widest font-light uppercase text-xs">Bottle</th>
+              </tr>
+            </thead>
+            <tbody>
+              {roses.map((w, i) => (
+                <tr class={`wine-row border-b border-wine-gold/10 ${i % 2 === 0 ? 'bg-wine-black/40' : 'bg-wine-green/10'}`}>
+                  <td class="px-5 py-4 text-wine-gold font-medium tracking-wide">{w.wine}</td>
+                  <td class="px-5 py-4 text-white/70">{w.producer}</td>
+                  <td class="px-5 py-4 text-white/50 italic text-xs">{w.region}</td>
+                  <td class="px-5 py-4 text-white/75 max-w-xs">{w.notes}</td>
+                  <td class="px-5 py-4 text-wine-light-gold text-right">{w.glass !== "—" ? `$${w.glass}` : "—"}</td>
+                  <td class="px-5 py-4 text-wine-light-gold font-bold text-right">${w.bottle}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── RED ── -->
+      <div>
+        <div class="text-center mb-12">
+          <h2 class="text-4xl md:text-5xl text-wine-gold tracking-[4px] font-light uppercase mb-4 relative inline-block category-title">Red Wines</h2>
+          <div class="relative w-[150px] h-0.5 bg-wine-gold mx-auto mt-4">
+            <div class="absolute top-1/2 -translate-y-1/2 -left-4 w-1.5 h-1.5 bg-wine-green rounded-full"></div>
+            <div class="absolute top-1/2 -translate-y-1/2 -right-4 w-1.5 h-1.5 bg-wine-green rounded-full"></div>
+          </div>
+        </div>
+        <div class="block md:hidden space-y-4">
+          {reds.map((w) => (
+            <div class="wine-card bg-gradient-to-br from-wine-green/30 to-wine-gray/30 p-5 rounded-lg border border-wine-gold/30">
+              <div class="flex justify-between items-start mb-1">
+                <div>
+                  <span class="text-wine-gold font-semibold tracking-wide">{w.wine}</span>
+                  <span class="text-white/50 text-sm ml-2">· {w.producer}</span>
+                </div>
+                <div class="text-right flex-shrink-0 ml-3">
+                  {w.glass !== "—" && <div class="text-wine-light-gold text-sm">Glass <span class="font-bold">${w.glass}</span></div>}
+                  <div class="text-wine-light-gold text-sm">Bottle <span class="font-bold">${w.bottle}</span></div>
+                </div>
+              </div>
+              <p class="text-white/50 text-xs italic mb-1">{w.region}</p>
+              <p class="text-white/75 text-sm">{w.notes}</p>
+            </div>
+          ))}
+        </div>
+        <div class="hidden md:block overflow-x-auto rounded-lg border border-wine-gold/20">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-wine-green/60 border-b border-wine-gold/30">
+                <th class="text-left px-5 py-3 text-wine-gold tracking-widest font-light uppercase text-xs">Wine</th>
+                <th class="text-left px-5 py-3 text-wine-gold tracking-widest font-light uppercase text-xs">Producer</th>
+                <th class="text-left px-5 py-3 text-wine-gold tracking-widest font-light uppercase text-xs">Region</th>
+                <th class="text-left px-5 py-3 text-wine-gold tracking-widest font-light uppercase text-xs">Notes</th>
+                <th class="text-right px-5 py-3 text-wine-gold tracking-widest font-light uppercase text-xs">Glass</th>
+                <th class="text-right px-5 py-3 text-wine-gold tracking-widest font-light uppercase text-xs">Bottle</th>
+              </tr>
+            </thead>
+            <tbody>
+              {reds.map((w, i) => (
+                <tr class={`wine-row border-b border-wine-gold/10 ${i % 2 === 0 ? 'bg-wine-black/40' : 'bg-wine-green/10'}`}>
+                  <td class="px-5 py-4 text-wine-gold font-medium tracking-wide">{w.wine}</td>
+                  <td class="px-5 py-4 text-white/70">{w.producer}</td>
+                  <td class="px-5 py-4 text-white/50 italic text-xs">{w.region}</td>
+                  <td class="px-5 py-4 text-white/75 max-w-xs">{w.notes}</td>
+                  <td class="px-5 py-4 text-wine-light-gold text-right">{w.glass !== "—" ? `$${w.glass}` : "—"}</td>
+                  <td class="px-5 py-4 text-wine-light-gold font-bold text-right">${w.bottle}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
 
@@ -328,40 +385,31 @@ const smallPlates = [
 </Layout>
 
 <script>
-  // Intersection Observer for fade-in animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('opacity-100', 'translate-y-0');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('opacity-100', 'translate-y-0');
       }
     });
-  }, observerOptions);
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-  // Observe wine cards with staggered animation
-  document.querySelectorAll('.wine-card').forEach((card, index) => {
-    const element = card as HTMLElement;
-    element.classList.add('opacity-0', 'translate-y-4', 'transition-all', 'duration-400');
-    element.style.transitionDelay = `${index * 100}ms`;
-    observer.observe(element);
+  document.querySelectorAll('.wine-card, .food-card').forEach((el, i) => {
+    const e = el as HTMLElement;
+    e.classList.add('opacity-0', 'translate-y-4', 'transition-all', 'duration-400');
+    e.style.transitionDelay = `${i * 50}ms`;
+    obs.observe(e);
   });
 
-  // Observe food cards with staggered animation
-  document.querySelectorAll('.food-card').forEach((card, index) => {
-    const element = card as HTMLElement;
-    element.classList.add('opacity-0', 'translate-y-4', 'transition-all', 'duration-400');
-    element.style.transitionDelay = `${index * 100}ms`;
-    observer.observe(element);
+  document.querySelectorAll('.category-title').forEach(el => {
+    el.classList.add('opacity-0', 'translate-y-5', 'transition-all', 'duration-700');
+    obs.observe(el);
   });
 
-  // Observe category titles
-  document.querySelectorAll('.category-title').forEach((header) => {
-    header.classList.add('opacity-0', 'translate-y-5', 'transition-all', 'duration-800');
-    observer.observe(header);
+  document.querySelectorAll('.wine-row').forEach((el, i) => {
+    const e = el as HTMLElement;
+    e.classList.add('opacity-0', 'transition-opacity', 'duration-300');
+    e.style.transitionDelay = `${i * 35}ms`;
+    obs.observe(e);
   });
 </script>
 
@@ -375,48 +423,31 @@ const smallPlates = [
     color: #1a3a2e;
     font-size: 1rem;
   }
-  
-  .category-title::before {
-    left: -40px;
-  }
-  
-  .category-title::after {
-    right: -40px;
-  }
+  .category-title::before { left: -40px; }
+  .category-title::after  { right: -40px; }
 
-  .wine-card::before,
-  .food-card::before {
+  .wine-card::before, .food-card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(212, 175, 55, 0.1) 50%,
-      transparent 100%
-    );
-    transform: translateX(-100%); /* start off-screen left */
-    transition: transform 0.5s ease-out; /* faster and smoother */
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(212,175,55,0.08) 50%, transparent 100%);
+    transform: translateX(-100%);
+    transition: transform 0.45s ease-out;
     pointer-events: none;
   }
-
-  .wine-card:hover::before,
-  .food-card:hover::before {
-    transform: translateX(100%); /* slide across the card */
-  }
+  .wine-card:hover::before, .food-card:hover::before { transform: translateX(100%); }
   .wine-card, .food-card {
     position: relative;
-    overflow: hidden; /* prevents pseudo-element from overflowing */
-    transition: transform 1s ease, box-shadow 1s ease, border-color 1s ease;
-    will-change: transform;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   }
-  .wine-card:hover,
-  .food-card:hover {
-    transform: translateY(-4px); /* slightly less lift to avoid sideways shift */
-    border-color: #d4af37; /* wine-gold */
-    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.15); /* soft glow */
+  .wine-card:hover, .food-card:hover {
+    transform: translateY(-3px);
+    border-color: #d4af37;
+    box-shadow: 0 8px 24px rgba(212,175,55,0.15);
   }
+  .wine-row { transition: background 0.2s ease; }
+  .wine-row:hover { background: rgba(212,175,55,0.06) !important; }
+  .opacity-100 { opacity: 1 !important; }
+  .translate-y-0 { transform: translateY(0) !important; }
 </style>
