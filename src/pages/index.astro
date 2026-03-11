@@ -11,8 +11,10 @@ import Footer from '../components/Footer.astro';
   <Navigation currentPath="/" />
 
   <!-- Hero Section -->
+  <!-- Hero Section -->
   <section id="home" class="h-screen relative flex items-center justify-center overflow-hidden">
-    <!-- Hero Image -->
+
+    <!-- Full Background Image -->
     <div class="absolute inset-0">
       <img 
         src="/hero/wallpaper.JPG" 
@@ -22,26 +24,78 @@ import Footer from '../components/Footer.astro';
       />
     </div>
 
-    <!-- Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-br from-wine-black/70 to-wine-green/50 z-[1]"></div>
+    <!-- Dark overlay -->
+    <div class="absolute inset-0 bg-gradient-to-br from-wine-black/80 to-wine-green/60 z-[1]"></div>
 
-    <!-- Content -->
-    <div class="relative z-[2] text-center px-8">
-      <div class="mb-8">
-        <img 
-          src="/logos/tagline-logo-gold.webp" 
-          alt="Logo" 
-          class="max-w-[250px] h-auto mx-auto drop-shadow-[0_0_20px_rgba(212,175,55,0.3)]"
-        />
+    <!-- Content: Split Layout -->
+    <div class="relative z-[2] w-full max-w-6xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center gap-8 md:gap-16">
+
+      <!-- LEFT: Food/Drink Image -->
+      <div class="w-full md:w-[45%] flex-shrink-0 flex justify-center md:justify-end">
+        <div class="relative">
+          <!-- Decorative gold border frame -->
+          <div class="absolute -inset-3 border border-wine-gold/30 rounded-sm pointer-events-none z-10"></div>
+          <div class="absolute -inset-1.5 border border-wine-gold/15 rounded-sm pointer-events-none z-10"></div>
+          <img 
+            src="/hero/Food.JPG" 
+            alt="Curated wines and small bites at Grayze"
+            class="w-full max-w-[380px] md:max-w-full h-[280px] md:h-[480px] object-cover rounded-sm shadow-[0_20px_60px_rgba(0,0,0,0.6)]"
+          />
+          <!-- Gold shimmer on bottom of image -->
+          <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-wine-gold/20 to-transparent rounded-b-sm"></div>
+        </div>
       </div>
-      <h1 class="text-5xl md:text-6xl font-light text-wine-gold tracking-[4px] uppercase mb-4 text-shadow-gold">
-        Now Open
-      </h1>
-      <h2 class="text-md md:text-xl text-wine-gold max-w-3xl mx-auto leading-relaxed">
-        Uncork. Unwind, Indulge at Southington's newest destination. Grayze offers a refined yet relaxed space to enjoy curated wines, craft cocktails, and small bites made to complement every pour. Whether you're gathering before dinner or winding down after.
-      </h2>
-      <div class="w-[200px] h-0.5 bg-gradient-to-r from-transparent via-wine-gold to-transparent mx-auto mt-8"></div>
+
+      <!-- Vertical Divider (desktop only) -->
+      <div class="hidden md:flex flex-col items-center gap-3 flex-shrink-0">
+        <div class="w-px h-16 bg-gradient-to-b from-transparent to-wine-gold/60"></div>
+        <div class="w-1.5 h-1.5 rounded-full bg-wine-gold/70"></div>
+        <div class="w-px h-32 bg-wine-gold/40"></div>
+        <div class="w-1.5 h-1.5 rounded-full bg-wine-gold/70"></div>
+        <div class="w-px h-16 bg-gradient-to-b from-wine-gold/60 to-transparent"></div>
+      </div>
+
+      <!-- RIGHT: Text Content -->
+      <div class="w-full md:w-[45%] text-center md:text-left flex flex-col items-center md:items-start">
+        <!-- Logo -->
+        <div class="mb-6">
+          <img 
+            src="/logos/tagline-logo-gold.webp" 
+            alt="Logo" 
+            class="max-w-[200px] md:max-w-[230px] h-auto drop-shadow-[0_0_20px_rgba(212,175,55,0.3)]"
+          />
+        </div>
+
+        <!-- Thin top rule -->
+        <div class="w-16 h-px bg-wine-gold/50 mb-5 hidden md:block"></div>
+
+        <h1 class="text-4xl md:text-5xl font-light text-wine-gold tracking-[4px] uppercase mb-4 text-shadow-gold">
+          Now Open
+        </h1>
+
+        <p class="text-sm md:text-base text-wine-gold/80 max-w-sm leading-relaxed mb-8">
+          Uncork. Unwind. Indulge at Southington's newest destination. Grayze offers a refined yet relaxed space to enjoy curated wines, craft cocktails, and small bites made to complement every pour — whether you're gathering before dinner or winding down after.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+          <a href="/menu" class="px-7 py-3 border border-wine-gold text-wine-gold text-sm tracking-widest uppercase hover:bg-wine-gold hover:text-wine-black transition-all duration-300 text-center">
+            View Menu
+          </a>
+          <a href="#contact" class="px-7 py-3 bg-wine-gold/10 border border-wine-gold/40 text-wine-gold/80 text-sm tracking-widest uppercase hover:bg-wine-gold/20 transition-all duration-300 text-center">
+            Contact Us
+          </a>
+        </div>
+
+        <!-- Bottom Rule -->
+        <div class="w-[120px] h-px bg-gradient-to-r from-wine-gold/60 to-transparent mt-8 hidden md:block"></div>
+      </div>
+
     </div>
+
+    <!-- Mobile horizontal rule -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-[2] w-[120px] h-px bg-gradient-to-r from-transparent via-wine-gold/50 to-transparent md:hidden"></div>
+
   </section>
 
   <!-- Gallery Section -->
