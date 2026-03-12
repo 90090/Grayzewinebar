@@ -12,7 +12,8 @@ const images: GalleryImage[] = [
   { src: '/gallery/seating2.JPG', alt: 'Bar Area' },
   { src: '/gallery/bar_area.webp', alt: 'Wine Bottles' },
   { src: '/gallery/seating3.JPG', alt: 'Cocktail' },
-
+  { src: '/gallery/bites.JPG', alt: 'Wine and Small Bites' },
+  { src: '/gallery/bites2.JPG', alt: 'More Wines and Small Bites' },
 ];
 
 export default function Gallery() {
@@ -173,9 +174,9 @@ export default function Gallery() {
           </div>
 
           {/* Wide image */}
-          {/* <div
+          <div
             onClick={() => openModal(6)}
-            className="col-span-3 row-span-1 relative overflow-hidden cursor-pointer border-2 border-transparent transition-all duration-300 hover:border-wine-gold hover:scale-[1.02] hover:z-10 group"
+            className="col-span-3 row-span-2 relative overflow-hidden cursor-pointer border-2 border-transparent transition-all duration-300 hover:border-wine-gold hover:scale-[1.02] hover:z-10 group"
           >
             <img src={images[6].src} alt={images[6].alt} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
             <div className="absolute inset-0 bg-gradient-to-br from-wine-gold/80 to-wine-green/80 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
@@ -185,13 +186,13 @@ export default function Gallery() {
 
           <div
             onClick={() => openModal(7)}
-            className="col-span-2 row-span-1 relative overflow-hidden cursor-pointer border-2 border-transparent transition-all duration-300 hover:border-wine-gold hover:scale-[1.02] hover:z-10 group"
+            className="col-span-2 row-span-2 relative overflow-hidden cursor-pointer border-2 border-transparent transition-all duration-300 hover:border-wine-gold hover:scale-[1.02] hover:z-10 group"
           >
             <img src={images[7].src} alt={images[7].alt} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
             <div className="absolute inset-0 bg-gradient-to-br from-wine-gold/80 to-wine-green/80 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span className="text-5xl text-white font-light">+</span>
             </div>
-          </div> */}
+          </div>
         </div>
       </section>
 
